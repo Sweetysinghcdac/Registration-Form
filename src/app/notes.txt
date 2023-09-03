@@ -1,0 +1,45 @@
+<app.component.html>
+{
+    <button>Save</button>
+<button class="btn btn-success">Save</button>
+<button class="btn btn-primary">Save2</button>
+<button class="btn btn-danger">Save2</button>
+<button >Save</button>
+<i class="fa fa-edit"></i>
+<i class="fa fa-trash-o"></i>
+}
+
+<app.component.ts>
+//Code 
+    this.toaster.success("Saved Success", "user master")
+this.toaster.info("Info success", "user master")
+this.toaster.warning("Warning", "user master")
+this.toaster.error("Error", "user master")
+// Swal.fire('Oops....', 'something went wrong!', 'error');
+Swal.fire({
+  title :'Are you sure?',
+  text: 'You will not be able to recover this record!',
+  icon : 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText:' No, Keep it'
+
+})
+.then((reult) => {
+  if(reult.value){
+    Swal.fire(
+      'Deleted!',
+      'Your record has been deleted.',
+      'success'
+    )
+  }
+  else if (reult.dismiss === Swal.DismissReason.cancel){
+    Swal.fire(
+      'cancelleed',
+      'Your record is safe :)',
+      'error'
+    )
+  }
+
+}
+
